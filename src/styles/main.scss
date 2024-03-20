@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+// @use 'vuetify' with (
+//     $body-font-family: 'Poppins',
+//     $border-radius-root: 50px,
+// );
+
+// 1. Abstracts
+@import './abstracts/variables.scss';
+
+// 2. Base styles
+@import "./base/base.scss";
+@import "./base/helpers.scss";
+
+// 3. Layout-related styles
+@import "layout/app-bar.scss";
+@import "layout/main-content.scss";
+@import "layout/navigation-drawer.scss";
+@import "layout/summit-comments.scss";
+@import "layout/version-tag.scss";
+
+// 4. Components
+@import "./components/alert.scss";
+@import "./components/badge.scss";
+@import "./components/chatbot.scss";
+@import "./components/button.scss";
+@import "./components/button-group.scss";
+@import "./components/datetime-picker.scss";
+@import "./components/document-list.scss";
+@import "./components/form.scss";
+@import "./components/file-upload.scss";
+@import "./components/modal.scss";
+@import "./components/note-list.scss";
+@import "./components/panel.scss";
+@import "./components/scrollbar.scss";
+@import "./components/tag.scss";
+@import "./components/tooltip.scss";
+
+// 5. Page-specific styles
+@import "./pages/sign-in.scss";
+@import "./pages/dashboard.scss";
+@import "./pages/predracun.scss";
+@import "./pages/izracun-obrokov.scss";
+@import "./pages/seznam-pogodb.scss";
+@import "./pages/faq.scss";
+@import "./pages/kontakt.scss";
+@import "./pages/landing-page.scss";
+
+// 6. Vendor styles overrides
+@import "./vendors/vuepic.scss";

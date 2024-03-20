@@ -1,0 +1,21 @@
+
+@use 'vuetify/settings' with (
+
+    // VApp
+    // $application-background: linear-gradient(138deg, #F5F8F9 6.78%, #ECF5FC 51.76%, #E9EAEF 94.56%),
+    // $application-color: $
+
+
+    // Button
+    $button-border-radius: 50px,
+
+    // Card
+    $card-border-radius: 15px,
+    $card-elevation: 0,
+    $card-padding: 50px 50px 70px,
+    $card-title-text-transform: uppercase,
+    $card-title-font-size: 20px,
+    $card-title-font-weight: 600,
+
+
+);

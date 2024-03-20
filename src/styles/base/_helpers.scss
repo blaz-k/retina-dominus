@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+.relative {
+    position: relative;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.hr {
+    border-top: 1px solid #8DA4AF;
+    opacity: 0.1;
+ }
+ 
+ 
+ .primary {
+    color: $primary !important;
+ }
+
+ .accent {
+    color: $accent !important;
+ }
+
+ .disabled {
+    opacity: 0.35 !important;
+ }
+
+ .font-weight-semi-bold {
+   font-weight: 600 !important;
+ }
+
+ .font-size-sm {
+   font-size: 14px;
+ }
+
+ .cursor-pointer {
+   cursor: pointer;
+ }

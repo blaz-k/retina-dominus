@@ -1,0 +1,78 @@
+{   
+  "compilerOptions": {
+      "target": "esnext",
+      "useDefineForClassFields": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "strict": true,
+      "jsx": "preserve",
+      "baseUrl": ".",
+      "sourceMap": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "esModuleInterop": true,
+      "lib": ["esnext", "dom"],
+      "types": [ "vite/client", "node" ],
+      "skipLibCheck": true,
+      "outDir": "out",
+      "paths": {
+        "@/*": ["./src/*"],
+        "@locales/*": ["./locales/*"],
+        "@assets/*": ["./src/assets/*"],
+        "@app/*": ["./src/*"],
+        "@appstore/*": ["./src/store/app/*"],
+        "@publicstore/*": ["./src/store/public/*"],
+        "@components/*": ["./src/components/*"],
+        "@views/*": ["./src/views/*"],
+      }
+    },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}
+
+// {
+//   "compilerOptions": {
+//     "target": "esnext",
+//     "useDefineForClassFields": true,
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "strict": true,
+//     "jsx": "preserve",
+//     "baseUrl": ".",
+//     "sourceMap": true,
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "esModuleInterop": true,
+//     "lib": ["esnext", "dom"],
+//     "types": [ "vite/client", "node" ],
+//     "skipLibCheck": true,
+//     "outDir": "out",
+//     "paths": {
+//       "@/*": ["./src/*"],
+//       "@locales/*": ["./locales/*"],
+//       "@assets/*": ["./src/assets/*"],
+//       "@app/*": ["./src/*"],
+//       "@appstore/*": ["./src/store/app/*"],
+//       "@publicstore/*": ["./src/store/public/*"],
+//       "@components/*": ["./src/components/*"],
+//       "@views/*": ["./src/views/*"],
+//     }
+//   },
+//   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+//   "files": [],
+//   "references": [
+//     {
+//       "path": "./tsconfig.node.json"
+//     },
+//     {
+//       "path": "./tsconfig.app.json"
+//     }
+//   ]
+// }
