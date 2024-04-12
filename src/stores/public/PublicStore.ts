@@ -1,9 +1,15 @@
 import { defineStore } from "pinia";
 import router from "@/router";
+import axios from "axios"
 
 export interface ILoginForm{
-    Email: string;
+    StoreId: string;
     Password: string;
+}
+
+export interface IEmployeeCheckIn{
+    EmployeeIdInternal: string;
+    Name: string;
 }
 
 export interface IPublicHelpres {
@@ -14,47 +20,73 @@ export interface IPublicHelpres {
 interface IPublicState{
     Login: ILoginForm;
     PublicHelpers: IPublicHelpres;
+    // storeId: string;
+    // password: string;
+    EmployeeCheckIn: IEmployeeCheckIn;
 }
 
 export const usePublicStore = defineStore('public', {
     state: (): IPublicState => {
         return {
             Login: {
-                Email: "",
+                StoreId: "",
                 Password: "",
             },
             PublicHelpers: {
                 LoginValid: false,
                 LoginError: ""
+            },
+            EmployeeCheckIn: {
+                EmployeeIdInternal: "",
+                Name: ""
             }
         }
     },
     actions: {
         async userLogin() {
             router.push({name: 'dashboard_dashboard'})
-            // return new Promise((resolve, reject) => {
-            //     const loginComplete = (Message: any): void => {
-            //         if (Message.loginValid === true) {
-            //             this.login.loginValid = true;
-            //             sessionStorage.setItem("authToken", Message.authToken);
-            //             router.push("/app");
-            //             resolve("Success");
-            //         } else {
-            //             this.login.password = "";
-            //             this.login.loginError = Message.loginError;
-            //             // reject(Error("Napačno uporabniško ime in/ali geslo."));
-            //             this.login.loginValid = false;
-            //         }
-            //     };
-    
-            //     commClient.executeMethod("Login",
-            //         {
-            //             Username: this.login.username,
-            //             Password: this.login.password,
-            //             AppVer: SummitVersion
-            //         },
-            //         loginComplete);
-            // });
+            
         },
+        // storeId
+
+        async StoreLogin() {
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZUlkIjoiMSIsImlhdCI6MTcxMjUxOTAzNiwiZXhwIjoxNzEyNTI5ODM2fQ.7QayuUg7diD3ZSooKHV_yHqkf4wL7S3yJS166wKl43o';
+
+            try {
+                const data = await axios.get('http://localhost:5001/employees/checked-in',{ 
+                    headers: {
+                      'Authorization': 'Bearer ' + token
+                    } 
+                  }
+
+                )
+                this.EmployeeCheckIn = data.data
+            }
+                catch (error) {
+                    alert(error)
+                    console.log(error)
+            }
+        },
+
+        //tole gre v APP STORE
+        async fetchUsers() {
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZUlkIjoiMSIsImlhdCI6MTcxMjUxNzc3MiwiZXhwIjoxNzEyNTI4NTcyfQ.BqhTOGVZACt7sdiAgCnwe-2dr6ZxdixTkeJ3DgVslzM';
+
+            try {
+                const data = await axios.get('http://localhost:5001/employees',{ 
+                    headers: {
+                      'Authorization': 'Bearer ' + token
+                    } 
+                  }
+
+                )
+                this.Login = data.data
+                }
+                catch (error) {
+                    alert(error)
+                    console.log(error)
+            }
+        }
+        
     },
 });

@@ -7,6 +7,10 @@
 
 				Dominus Eye
 			</h1>
+            <p>
+                {{ publicStore.Login }} 
+                {{ publicStore.EmployeeCheckIn }} 
+            </p>
         
         </v-col>
     </v-row>
@@ -31,9 +35,7 @@
                             Email
                         </label>
                         <v-text-field 
-                        	v-model="publicStore.Login.Email"
-							:error="v$.Email.$error"
-							:error-messages="v$.Email.$errors[0] != null ? v$.Email.$errors[0].$message : ''"
+                        	v-model="publicStore.Login.StoreId"
 							variant="outlined">
                         </v-text-field>
                     </div>
@@ -74,24 +76,26 @@
 </template>
 
 <script setup lang="ts">
-  import router from '@/router';
-  import { useVuelidate } from "@vuelidate/core";
-  import errors from "../../../GlobalErrors";
-  import { computed } from 'vue';
-  import { usePublicStore } from '@/stores/public/PublicStore';
+    import router from '@/router';
+    import { useVuelidate } from "@vuelidate/core";
+    import errors from "../../../GlobalErrors";
+    import { computed } from 'vue';
+    import { usePublicStore } from '@/stores/public/PublicStore';
 
-  const publicStore = usePublicStore();
+    const publicStore = usePublicStore();
+    
+    publicStore.StoreLogin();
 
-  function clearPasswordErrorOnFocus(){
-      v$.value.Password.$reset();
-  }
+    function clearPasswordErrorOnFocus(){
+        v$.value.Password.$reset();
+    }
 
-  async function loginRetina(){
-    await validateForm().then(() => {
+    async function loginRetina(){
+        await validateForm().then(() => {
             v$.value.$reset();
             router.push({name: 'dashboard_dashboard'})
         });
-  }
+    }
 
     async function validateForm(): Promise<void> {
         v$.value.$touch();
@@ -104,10 +108,6 @@
     }
 
     const validationRules = computed(() => ({
-        Email: {      
-          required: errors.fieldRequired,
-          customRequired: errors.customEmail,
-        },
         Password: {
             required: errors.fieldRequired
         }
